@@ -4,6 +4,7 @@ import io, time
 import RPi.GPIO as GPIO
 import picamera
 import subprocess
+#import aalib
 from PIL import Image
 from Adafruit_Thermal import *
 
@@ -90,8 +91,17 @@ def cameraMode():
             image = image.crop((80, 0, 560, 480))
             image = image.resize((384, 384))
             image = image.rotate(180)
+
+            # This is for printing ascii art.
+            # Not really enough resolution though...
+            #screen = aalib.AsciiScreen(width=30, height=15)
+            #screen.put_image((0, 0), image)
+            #printer.println(screen.render())
+            #printer.feed(6)
+
             printer.printImage(image, False)
             printer.feed(6)
+
             stream = io.BytesIO()
 
             # Reset the LED to HIGH
