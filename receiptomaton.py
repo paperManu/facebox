@@ -64,6 +64,7 @@ def cameraMode():
                 time.sleep(0.5)
                 pressedTime = time.time() - pressTime
                 if pressedTime > 5:
+                    GPIO.output(18, GPIO.LOW)
                     command = "/usr/bin/sudo /sbin/shutdown -h now"
                     process = subprocess.Popen(command.split(), stdout=subprocess.PIPE)
                     output = process.communicate()[0]
