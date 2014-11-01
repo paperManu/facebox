@@ -42,7 +42,7 @@ def blink():
 def cameraMode():
     printer.upsideDownOn()
     printer.boldOn()
-    printer.println("Receipt-o-maton")
+    printer.println("Facebox")
     printer.boldOff()
     printer.feed(6)
 
@@ -68,7 +68,7 @@ def cameraMode():
                     process = subprocess.Popen(command.split(), stdout=subprocess.PIPE)
                     output = process.communicate()[0]
                     print output
-
+                    
             # Activate the camera
             camera = picamera.PiCamera()
             waitTime = 0
@@ -100,7 +100,11 @@ def cameraMode():
             #printer.feed(6)
 
             printer.printImage(image, False)
-            printer.feed(6)
+
+            printer.feed(4)
+            printer.upsideDownOn()
+            printer.println("#museomixmtl")
+            printer.feed(1)
 
             stream = io.BytesIO()
 
